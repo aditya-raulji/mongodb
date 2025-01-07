@@ -1,6 +1,4 @@
-# Task 1: Create a "CodingGita Students" database
-
-## **Assignment: Building the "CodingGita Students" Database**
+# **Assignment: Building the "CodingGita Students" Database**
 
 #### In this article, we will walk through a practical assignment that helps you solidify the concepts you've learned so far. You will be creating a "CodingGita Students" database with two collections: students and courses. You will also perform basic CRUD operations (Create, Read, Update, Delete) to manage the data. By the end of this task, you will have hands-on experience with inserting, querying, and modifying data in MongoDB.
 
@@ -37,24 +35,24 @@ use codinggita  // Switch to the CodingGita database. If it doesn't exist, Mongo
   ````jsx 
   db.students.insertMany([
   { 
-    "name": "Aditya",
-    "rollNumber": 100,
+    "name": "Jenil",
+    "rollNumber": 101,
     "department": "Computer Science",
-    "year": 1,
+    "year": 2,
     "coursesEnrolled": ["CS101", "CS102"]
   },
   { 
-    "name": "Ridhm",
-    "rollNumber": 101,
+    "name": "Mahir",
+    "rollNumber": 102,
     "department": "Computer Science",
-    "year": 1,
+    "year": 2,
     "coursesEnrolled": ["CS101", "CS103"]
   },
   { 
-    "name": "Rijans",
-    "rollNumber": 102,
+    "name": "Arjun",
+    "rollNumber": 103,
     "department": "Electrical Engineering",
-    "year": 2,
+    "year": 3,
     "coursesEnrolled": ["EE101", "EE102"]
   }
 ]); 
@@ -68,7 +66,7 @@ db.courses.insertMany([
     "courseCode": "CS101", 
     "courseName": "Introduction to Programming", 
     "credits": 3, 
-    "instructor": "Prof. Rs" 
+    "instructor": "Prof. Sharma" 
   },
   { 
     "courseCode": "CS102", 
@@ -80,7 +78,7 @@ db.courses.insertMany([
     "courseCode": "CS103", 
     "courseName": "Algorithms", 
     "credits": 3, 
-    "instructor": "Prof. Khan" 
+    "instructor": "Prof. Kapoor" 
   },
   { 
     "courseCode": "EE101", 
@@ -98,58 +96,6 @@ db.courses.insertMany([
 ````
 
 - At this point, you have successfully inserted data into the students and courses collections.
-
-
-
-# Task 2: Perform CRUD operations
-
- - Add a few more students and courses to the database.
-
- ```jsx
-db.students.insertMany([
-  {
-    "name": "Sanjana",
-    "rollNumber": 103,
-    "department": "Mechanical Engineering",
-    "year": 2,
-    "coursesEnrolled": ["ME101", "ME102"]
-  },
-  {
-    "name": "Aarav",
-    "rollNumber": 104,
-    "department": "Computer Science",
-    "year": 2,
-    "coursesEnrolled": ["CS101", "CS104"]
-  }
-]);
-```
-
-###  Add More Courses:
-
-```jsx
-
-db.courses.insertMany([
-  {
-    "courseCode": "CS104",
-    "courseName": "Operating Systems",
-    "credits": 3,
-    "instructor": "Prof. Sharma"
-  },
-  {
-    "courseCode": "ME101",
-    "courseName": "Thermodynamics",
-    "credits": 4,
-    "instructor": "Prof. Nair"
-  },
-  {
-    "courseCode": "ME102",
-    "courseName": "Fluid Mechanics",
-    "credits": 4,
-    "instructor": "Prof. Patel"
-  }
-]);
-```
-
 
 ## 3. Querying Data
 
@@ -188,8 +134,8 @@ db.students.find({ "coursesEnrolled": "CS101" });
 
 ```jsx
 db.students.updateOne(
-  { "name": "104" },
-  { $push: { "coursesEnrolled": "CS103" } }
+  { "name": "Arjun" },
+  { $push: { "coursesEnrolled": "CS102" } }
 );
 ```
 
@@ -199,8 +145,8 @@ db.students.updateOne(
 
 ```jsx
 db.courses.updateOne(
-  { "courseCode": "CS104" },
-  { $set: { "instructor": "Prof. Sharma" } }
+  { "courseCode": "CS102" },
+  { $set: { "instructor": "Prof. Mehta" } }
 );
 
 ```
@@ -213,7 +159,7 @@ db.courses.updateOne(
 - Step 1: Delete a student record If we want to delete Arjun’s student record from the database, we can do so with the following command:
 
 ```jsx 
-db.students.deleteOne({rollNumber: 102  });
+db.students.deleteOne({ "name": "Arjun" });
 ```
 
 - This will delete the document where the name field is Arjun.
@@ -221,7 +167,7 @@ db.students.deleteOne({rollNumber: 102  });
 - Step 2: Delete all students from a specific department Let’s say we want to remove all students from the Electrical Engineering department:
 
 ```jsx
-db.students.deleteMany({ courseCode: "ME101" });
+db.students.deleteMany({ "department": "Electrical Engineering" });
 ```
 
 - This will delete all students in the Electrical Engineering department.
